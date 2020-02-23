@@ -6,11 +6,11 @@ RUN apt-get update \
     nginx \
     python3 \
     python3-pip \
-    && apt-get install -qy software-properties-common \
-    && add-apt-repository universe \
-    && add-apt-repository ppa:certbot/certbot \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -qy software-properties-common \
+    && DEBIAN_FRONTEND=noninteractive add-apt-repository universe \
+    && DEBIAN_FRONTEND=noninteractive add-apt-repository ppa:certbot/certbot \
     && apt-get update \
-    && apt-get install certbot python-certbot-nginx \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -qy certbot python-certbot-nginx \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install flask uwsgi
