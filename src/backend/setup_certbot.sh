@@ -1,13 +1,13 @@
-nginx -t && service nginx restart
+nginx -t && service nginx start
 
-certbot certonly \
+certbot \
+    -n \
     --nginx \
     -d markdownpastebin.com \
     -d www.markdownpastebin.com \
-    -n \
+    --redirect \
     --agree-tos \
-    --email chrisyunhua@gmail.com \
-    --force-renewal
+    --email chrisyunhua@gmail.com
 
 nginx -t && service nginx reload
 
