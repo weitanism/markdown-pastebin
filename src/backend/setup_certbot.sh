@@ -3,6 +3,7 @@ nginx -t && service nginx start
 certbot \
     -n \
     --nginx \
+    --expand \
     -d markdownpastebin.com \
     -d www.markdownpastebin.com \
     -d mdpastebin.com \
