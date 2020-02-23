@@ -2,7 +2,7 @@ sed -i -r \
     's/(listen .*443)/\1;#/g; s/(ssl_(certificate|certificate_key|trusted_certificate) )/#;#\1/g' \
     /etc/nginx/sites-available/markdownpastebin.com.conf
 
-nginx -t && service reload nginx
+nginx -t && service nginx restart
 
 certbot certonly \
     --webroot \
@@ -16,7 +16,7 @@ certbot certonly \
 
 sed -i -r 's/#?;#//g' /etc/nginx/sites-available/markdownpastebin.com.conf
 
-nginx -t && service reload nginx
+nginx -t && service nginx restart
 
-echo -e '#!/bin/bash\nnginx -t && service reload nginx' | tee /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh
+echo -e '#!/bin/bash\nnginx -t && service nginx reload' | tee /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh
 chmod a+x /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh
