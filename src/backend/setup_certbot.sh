@@ -11,6 +11,7 @@ certbot certonly \
     -w /var/www/_letsencrypt \
     -n \
     --agree-tos \
+    --email chrisyunhua@gmail.com \
     --force-renewal
 
 sed -i -r 's/#?;#//g' /etc/nginx/sites-available/markdownpastebin.com.conf
