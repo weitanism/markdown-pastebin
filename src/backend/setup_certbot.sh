@@ -5,6 +5,8 @@ certbot \
     --nginx \
     -d markdownpastebin.com \
     -d www.markdownpastebin.com \
+    -d mdpastebin.com \
+    -d www.mdpastebin.com \
     --redirect \
     --agree-tos \
     --email chrisyunhua@gmail.com
