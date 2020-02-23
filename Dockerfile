@@ -17,9 +17,6 @@ RUN python3 -m pip install flask uwsgi
 
 # Add nginx configs.
 ADD config/nginx /etc/nginx
-RUN openssl dhparam -out /etc/nginx/dhparam.pem 2048
-RUN mkdir -p /var/www/_letsencrypt \
-    && chown www-data /var/www/_letsencrypt
 
 # Add frontend files.
 ADD dist /var/www/markdownpastebin.com
