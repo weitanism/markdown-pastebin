@@ -2,7 +2,7 @@
   <div class="container">
     <div class="link" v-bind:class="{'hide': !link}">
       <i class="fa fa-link link-icon"></i>
-      {{ this.link }}
+      <a v-bind:href="link">{{ this.link }}</a>
     </div>
     <div class="share" v-bind:class="{'hide': link}" v-on:click="share">Share</div>
   </div>

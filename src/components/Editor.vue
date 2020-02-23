@@ -14,14 +14,8 @@ export default {
       editor,
       config: {
         autofocus: true,
-        autosave: {
-          enabled: true,
-          uniqueId: "UniqueID",
-          delay: 1000
-        },
         forceSync: true,
         indentWithTabs: false,
-        initialValue: "# Hello world!\n```\nimport antigravity\n```",
         lineWrapping: false,
         parsingConfig: {
           allowAtxHeaderWithoutSpace: true,
@@ -29,7 +23,6 @@ export default {
           underscoresBreakWords: true
         },
         placeholder: "Type here...",
-        promptURLs: true,
         renderingConfig: {
           singleLineBreaks: false,
           codeSyntaxHighlighting: true
@@ -40,14 +33,30 @@ export default {
       }
     };
   },
-  methods: {},
+  methods: {
+    activatePreviewMode(content = null) {
+      if (content !== null) {
+        this.editor.value(content);
+        console.log(content, this.editor.value());
+      }
+      if (!this.editor.isPreviewActive()) {
+        this.editor.togglePreview();
+      }
+    },
+    content() {
+      return this.editor.value();
+    }
+  },
   mounted() {
-    editor = new SimpleMDE(this.config);
+    if (!editor) {
+      this.editor = new SimpleMDE(this.config);
+      this.editor.codemirror.on("change", () => this.$emit("change"));
+    }
   }
 };
 </script>
 
 <style scoped>
 /* @import url("../../node_modules/simplemde/src/css/simplemde.css"); */
-@import url("https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css");
+/* @import url("https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"); */
 </style>

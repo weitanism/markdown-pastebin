@@ -19,3 +19,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+*.pyc
+src/backend/uploads
+.mypy_cache
