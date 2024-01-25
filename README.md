@@ -1,5 +1,7 @@
 # markdown-pastebin
 
+Source code of [markdownpastebin.com](https://markdownpastebin.com/).
+
 ## Project setup
 ```
 npm install
